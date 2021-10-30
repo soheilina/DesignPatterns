@@ -1,0 +1,3 @@
+add_executable(PatternsProject main.cpp)
+target_include_directories(PatternsProject PUBLIC ${CMAKE_SOURCE_DIR}/headers)
+target_compile_features(PatternsProject PRIVATE cxx_std_17)
