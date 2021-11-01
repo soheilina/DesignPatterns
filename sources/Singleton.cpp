@@ -3,7 +3,7 @@
 Singleton* Singleton::m_instance{nullptr};
 
 Singleton::Singleton()
-: m_name("NoName")
+: m_name("")
 {}
 
 Singleton::~Singleton(){
