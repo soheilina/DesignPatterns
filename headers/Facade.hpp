@@ -33,7 +33,7 @@ public:
     : AccountInterface()
     , m_accountType("Chequing")
     {}
-    ~Chequing() = default;
+    virtual ~Chequing() = default;
     Chequing(const Chequing& rhs) = delete;
     Chequing(const Chequing&& rhs) = delete;
     Chequing& operator=(const Chequing& rhs) = delete;
@@ -52,7 +52,7 @@ public:
     : AccountInterface()
     , m_accountType("Saving")
     {}
-    ~Saving() = default;
+    virtual ~Saving() = default;
     Saving(const Saving& rhs) = delete;
     Saving(const Saving&& rhs) = delete;
     Saving& operator=(const Saving& rhs) = delete;
@@ -71,7 +71,7 @@ public:
     : AccountInterface()
     , m_accountType("Investment")
     {}
-    ~Investment() = default;
+    virtual ~Investment() = default;
     Investment(const Investment& rhs) = delete;
     Investment(const Investment&& rhs) = delete;
     Investment& operator=(const Investment& rhs) = delete;
@@ -91,6 +91,11 @@ public:
     : m_allAccounts()
     , m_accountNumber(1000)
     {}
+    ~BankService() = default;
+    BankService(const BankService& rhs) = delete;
+    BankService(const BankService&& rhs) = delete;
+    BankService& operator=(const BankService& rhs) = delete;
+    BankService& operator=(const BankService&& rhs) = delete;
 
 public:
     uint16_t createNewAccount(AccountType type, uint16_t amount);
