@@ -3,14 +3,17 @@
 
 #include "Singleton.hpp"
 #include "Factory.hpp"
+#include "Facade.hpp"
 
 void testSingleton();
 void testFactory();
+void testFacade();
 
 int main(){
     std::cout << "To test any Design Pattern, please enter its corresponding number." << std::endl;
     std::cout << "For Singleton enter 1\n"
               << "For Factory enter 2\n"
+              << "For Facade enter 3\n"
               << std::endl;
     
     int input{0};
@@ -23,9 +26,15 @@ int main(){
     }
     case 2:{
         testFactory();
+        break;
+    }
+    case 3:{
+        testFacade();
+        break;
     }
     
     default:
+        std::cout << "You entered invalid number" << std::endl;
         break;
     }
 }
@@ -56,4 +65,25 @@ void testFactory(){
 
     c = std::make_shared<Client>(VehicleType::SedanType);
     c->getVehicle()->printVehicleData();
+}
+
+void testFacade(){
+    std::unique_ptr<BankService> pBankService = std::make_unique<BankService>();
+    
+    auto AliceSavingAccountNumber = pBankService->createNewAccount(AccountType::savingAccount, 500);
+    auto AliceInvestmentAccountNumber = pBankService->createNewAccount(AccountType::investmentAccount, 1000);
+    std::cout << "Alice' saving is: " << pBankService->getAmountOfAccount(AliceSavingAccountNumber) << " and her investment is: " << pBankService->getAmountOfAccount(AliceInvestmentAccountNumber) << std::endl;
+
+    auto BobSavingAccountNumber = pBankService->createNewAccount(AccountType::savingAccount, 1500);
+    auto BobInvestmentAccountNumber = pBankService->createNewAccount(AccountType::investmentAccount, 2000);
+    std::cout << "Bob's saving is: " << pBankService->getAmountOfAccount(BobSavingAccountNumber)  << " and his investment is: " << pBankService->getAmountOfAccount(BobInvestmentAccountNumber) << std::endl;
+
+    uint16_t transferAmount{500};
+    pBankService->transferMoney(BobSavingAccountNumber, AliceSavingAccountNumber, transferAmount);
+    std::cout << "Bob transfered " << transferAmount << " to Alice' saving account."
+              << " Now his saving account is: " << pBankService->getAmountOfAccount(BobSavingAccountNumber)
+              << " and her saving account is: " << pBankService->getAmountOfAccount(AliceSavingAccountNumber)
+            << std::endl;
+
+    
 }
