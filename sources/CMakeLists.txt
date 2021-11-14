@@ -10,5 +10,5 @@ file (GLOB SRC_FILES
 )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/headers)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/headers ${CMAKE_SOURCE_DIR}/tests)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
