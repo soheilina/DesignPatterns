@@ -6,7 +6,7 @@ void AccountInterface::deposit(uint16_t amount){
 void AccountInterface::transfer(uint16_t amount){
     m_amount -= amount;
 }
-void AccountInterface::setAccountNumber(uint16_t accountNumber){
+void AccountInterface::assignAccountNumber(uint16_t accountNumber){
     m_accountNumber = accountNumber;
 }
 uint16_t AccountInterface::getAccountNumber() const {
@@ -40,25 +40,25 @@ uint16_t BankService::createNewAccount(AccountType type, uint16_t amount){
         case AccountType::chequingAccount:
         {
             std::unique_ptr<Chequing> pChequing = std::make_unique<Chequing>();
-            pChequing->setAccountNumber(++m_accountNumber);
+            pChequing->assignAccountNumber(++m_newAccountNumber);
             pChequing->deposit(amount);
-            m_allAccounts.insert(std::make_pair(m_accountNumber, std::move(pChequing)));
+            m_allAccounts.insert(std::make_pair(m_newAccountNumber, std::move(pChequing)));
             break;
         }
         case AccountType::savingAccount:
         {
             std::unique_ptr<Saving> pSaving = std::make_unique<Saving>();
-            pSaving->setAccountNumber(++m_accountNumber);
+            pSaving->assignAccountNumber(++m_newAccountNumber);
             pSaving->deposit(amount);
-            m_allAccounts.insert(std::make_pair(m_accountNumber, std::move(pSaving)));
+            m_allAccounts.insert(std::make_pair(m_newAccountNumber, std::move(pSaving)));
             break;
         }
         case AccountType::investmentAccount:
         {
             std::unique_ptr<Investment> pInvestment = std::make_unique<Investment>();
-            pInvestment->setAccountNumber(++m_accountNumber);
+            pInvestment->assignAccountNumber(++m_newAccountNumber);
             pInvestment->deposit(amount);
-            m_allAccounts.insert(std::make_pair(m_accountNumber, std::move(pInvestment)));
+            m_allAccounts.insert(std::make_pair(m_newAccountNumber, std::move(pInvestment)));
             break;
         }
         default:
@@ -67,7 +67,7 @@ uint16_t BankService::createNewAccount(AccountType type, uint16_t amount){
             break;
         }
     }
-    return m_accountNumber;
+    return m_newAccountNumber;
 }
 
 void BankService::transferMoney(uint16_t fromAccountNumber, uint16_t toAccountNumber, uint16_t amount){

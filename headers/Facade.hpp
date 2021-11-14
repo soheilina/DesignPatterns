@@ -17,7 +17,7 @@ public:
 public:
     virtual void deposit(uint16_t amount);
     virtual void transfer(uint16_t amount);
-    virtual void setAccountNumber(uint16_t accountNumber);
+    virtual void assignAccountNumber(uint16_t newAccountNumber);
     virtual uint16_t getAccountNumber() const;
     virtual uint16_t getAmount() const;
     virtual std::string getAccountType() const = 0;
@@ -89,7 +89,7 @@ class BankService{
 public:
     BankService()
     : m_allAccounts()
-    , m_accountNumber(1000)
+    , m_newAccountNumber(1000)
     {}
     ~BankService() = default;
     BankService(const BankService& rhs) = delete;
@@ -105,6 +105,6 @@ public:
 private:
     // Maps account number to its corresponding account
     std::unordered_map<uint16_t, std::shared_ptr<AccountInterface> > m_allAccounts;
-    // The account number that is assigned to an account
-    uint16_t m_accountNumber;
+    // The account number that is assigned to a new account
+    uint16_t m_newAccountNumber;
 };

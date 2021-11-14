@@ -72,6 +72,8 @@ void testFacade(){
     
     auto AliceSavingAccountNumber = pBankService->createNewAccount(AccountType::savingAccount, 500);
     auto AliceInvestmentAccountNumber = pBankService->createNewAccount(AccountType::investmentAccount, 1000);
+    std::cout << "AliceSavingAccountNumber: " << AliceSavingAccountNumber << std::endl;
+    std::cout << "AliceSavingAccountNumber: " << AliceSavingAccountNumber << std::endl;
     std::cout << "Alice' saving is: " << pBankService->getAmountOfAccount(AliceSavingAccountNumber) << " and her investment is: " << pBankService->getAmountOfAccount(AliceInvestmentAccountNumber) << std::endl;
 
     auto BobSavingAccountNumber = pBankService->createNewAccount(AccountType::savingAccount, 1500);
