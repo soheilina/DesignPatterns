@@ -5,7 +5,7 @@
 class Singleton{
 private:
     Singleton();
-    ~Singleton();
+    ~Singleton() = default;
 
     Singleton(const Singleton& other) = delete;
     Singleton(Singleton&& other) = delete;
@@ -18,5 +18,5 @@ public:
     
 private:
     std::string m_name;
-    static Singleton* m_instance;
+    static Singleton* s_instance;
 };

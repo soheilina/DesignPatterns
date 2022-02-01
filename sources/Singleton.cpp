@@ -1,19 +1,15 @@
 #include "Singleton.hpp"
 
-Singleton* Singleton::m_instance{nullptr};
+Singleton* Singleton::s_instance{nullptr};
 
 Singleton::Singleton()
 : m_name("")
 {}
 
-Singleton::~Singleton(){
-    delete m_instance;
-}
-
 Singleton* Singleton::makeInstance(){
-    if(m_instance==nullptr){
-        m_instance = new Singleton;
-        return m_instance;
+    if(s_instance==nullptr){
+        s_instance = new Singleton;
+        return s_instance;
     }
     else{
         return nullptr;
