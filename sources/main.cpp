@@ -6,12 +6,14 @@
 #include "Factory.hpp"
 #include "Facade.hpp"
 #include "FlyWeight.hpp"
+#include "Composite.hpp"
 
 // Tests
 #include "testSingleton.h"
 #include "testFactory.h"
 #include "testFacade.h"
 #include "tetsFlyWeight.h"
+#include "testComposite.h"
 
 void testSingleton();
 void testFactory();
@@ -24,6 +26,7 @@ int main(){
               << "2) For Factory enter \n"
               << "3) For Facade enter \n"
               << "4) For FlyWeight enter \n"
+              << "5) For Composite enter \n"
               << std::endl;
     
     int input{0};
@@ -46,7 +49,11 @@ int main(){
         testFlyWeight();
         break;
     }
-    
+    case 5:{
+        testComposite();
+        break;
+    }
+        
     default:
         std::cout << "You entered invalid number" << std::endl;
         break;
