@@ -1,4 +1,5 @@
-/*@brief
+/**
+* @brief
     It implements the Composite Design Pattern music playlists.
     Main idea:  the Composite class aggerates objects of type Interface.
                 So it can embody other objects of Composite class or of leaf class.

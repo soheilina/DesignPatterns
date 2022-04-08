@@ -15,6 +15,7 @@
 #include "tetsFlyWeight.h"
 #include "testComposite.h"
 
+int getTestRequestFromUser(int numberOfTests);
 void testSingleton();
 void testFactory();
 void testFacade();
@@ -29,8 +30,9 @@ int main(){
               << "5) For Composite enter \n"
               << std::endl;
     
-    int input{0};
-    std::cin >> input;
+    const int numberOfTests{5};
+    const int input = getTestRequestFromUser(numberOfTests);
+
     switch (input)
     {
     case 1:{
@@ -55,7 +57,19 @@ int main(){
     }
         
     default:
-        std::cout << "You entered invalid number" << std::endl;
+        std::cout << "You entered an invalid number" << std::endl;
         break;
+    }
+}
+
+int getTestRequestFromUser(int numberOfTests){
+    int n{0};
+    std::cin >> n;
+    if(n>=1 && n<=numberOfTests){
+        return n;
+    }
+    else{
+        std::cout << "You entered an invalid number. Try again! Enter a value from 1 to " << numberOfTests << ":" << std::endl;
+        return getTestRequestFromUser(numberOfTests);
     }
 }
