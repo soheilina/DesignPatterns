@@ -1,4 +1,4 @@
-#include "Singleton.hpp"
+#include "../headers/Singleton.hpp"
 
 Singleton* Singleton::s_instance{nullptr};
 

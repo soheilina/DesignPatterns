@@ -1,0 +1,4 @@
+# Following empty line ignores all temp files
+
+# ignore bazel build symlinks 
+bazel-*
