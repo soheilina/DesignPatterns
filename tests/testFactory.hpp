@@ -1,3 +1,5 @@
+#include "lib/Factory.hpp"
+
 void testFactory(){
     std::cout << "----- TEST STRATS-----" << std::endl;
     std::shared_ptr<Client> c = std::make_shared<Client>(VehicleType::BikeType);

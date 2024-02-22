@@ -1,3 +1,5 @@
+#include "lib/FlyWeight.hpp"
+
 void testFlyWeight(){
     std::cout << "----- TEST STRATS-----" << std::endl;
     std::unique_ptr<FlyWeight> FW = std::make_unique<FlyWeight>();

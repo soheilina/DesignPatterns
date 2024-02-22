@@ -1,4 +1,4 @@
-#include "../headers/Composite.hpp"
+#include "../Composite.hpp"
 
 //============================================================
 //-- Class CompositePlaylist

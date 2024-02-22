@@ -1,25 +1,14 @@
 #include <iostream>
 #include <memory>
 
-// Headers
-#include "../headers/Singleton.hpp"
-#include "../headers/Factory.hpp"
-#include "../headers/Facade.hpp"
-#include "../headers/FlyWeight.hpp"
-#include "../headers/Composite.hpp"
-
 // Tests
-#include "../tests/testSingleton.h"
-#include "../tests/testFactory.h"
-#include "../tests/testFacade.h"
-#include "../tests/testFlyWeight.h"
-#include "../tests/testComposite.h"
+#include "testComposite.hpp"
+#include "testFacade.hpp"
+#include "testFactory.hpp"
+#include "testFlyWeight.hpp"
+#include "testSingleton.hpp"
 
 int getTestRequestFromUser(int numberOfTests);
-void testSingleton();
-void testFactory();
-void testFacade();
-void testFlyWeight();
 
 int main()
 {

@@ -1,3 +1,5 @@
+#include "../lib/Composite.hpp"
+
 void testComposite(){
     std::cout << "----- TEST STRATS-----" << std::endl;
     

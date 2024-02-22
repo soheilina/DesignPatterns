@@ -1,4 +1,4 @@
-#include "../headers/FlyWeight.hpp"
+#include "../FlyWeight.hpp"
 
 //=========================
 //  Image Class

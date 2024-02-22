@@ -1,0 +1,9 @@
+package_group(
+    name = "DesignPatterns",
+    packages = [
+        "//DesignPatterns/lib",
+        "//DesignPatterns/main",
+        "//DesignPatterns/tests",
+    ],
+)
+

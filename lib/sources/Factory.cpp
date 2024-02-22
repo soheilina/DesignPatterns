@@ -1,4 +1,4 @@
-#include "../headers/Factory.hpp"
+#include "../Factory.hpp"
 
 // ----- class VehicleFactory -----
 std::shared_ptr<VehicleFactory> VehicleFactory::build(VehicleType type)

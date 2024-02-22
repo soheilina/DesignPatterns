@@ -1,3 +1,5 @@
+#include "lib/Singleton.hpp"
+
 void testSingleton(){
     std::cout << "----- STRAT TEST -----" << std::endl;
     Singleton* p1 = Singleton::makeInstance();

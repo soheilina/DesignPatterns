@@ -1,3 +1,5 @@
+#include "lib/Facade.hpp"
+
 void testFacade(){
     std::cout << "----- TEST STRATS-----" << std::endl;
     std::unique_ptr<BankService> pBankService = std::make_unique<BankService>();
