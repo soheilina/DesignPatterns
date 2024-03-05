@@ -7,3 +7,6 @@ build:linux --incompatible_strict_action_env=true
 build:linux --incompatible_enable_cc_toolchain_resolution
 # Enable Bzlmod for every Bazel command
 common --enable_bzlmod
+
+# Set C++ compiler version
+build --action_env=BAZEL_CXXOPTS="-std=c++17"
