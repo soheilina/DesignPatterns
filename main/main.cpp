@@ -1,53 +1,85 @@
-#include <iostream>
-#include <memory>
+#include "../lib/pch.hpp"
 
 // Tests
-#include "testComposite.hpp"
+#include "../tests/testComposite.hpp" //FIXME: without '../' we get error in clang-tidy but if we use '../' what's the point of including lib in bazel & cmake?
 #include "testFacade.hpp"
 #include "testFactory.hpp"
 #include "testFlyWeight.hpp"
 #include "testSingleton.hpp"
+#include "testDecorator.hpp"
+#include "testAdapter.hpp"
+#include "testStrategy.hpp"
 
-int getTestRequestFromUser(int numberOfTests);
+enum class DesignPatterns{
+    DEFAULT = 0,
+    SINGLETON = 1,
+    FACTORY = 2,
+    FACADE = 3,
+    FLYWEIGHT = 4,
+    COMPOSITE = 5,
+    DECORATOR = 6,
+    ADAPTER = 7,
+    STARTEGY = 8,
+    COUNT = 9
+};
+
+DesignPatterns getTestRequestFromUser(void);
 
 int main()
 {
     std::cout << "To test any Design Pattern, please enter its corresponding number." << std::endl;
-    std::cout << "1) For Singleton enter \n"
-              << "2) For Factory enter \n"
-              << "3) For Facade enter \n"
-              << "4) For FlyWeight enter \n"
-              << "5) For Composite enter \n"
+    std::cout << "1 For Singleton \n"
+              << "2 For Factory \n"
+              << "3 For Facade \n"
+              << "4 For FlyWeight \n"
+              << "5 For Composite \n"
+              << "6 For Decorator \n"
+              << "7 For Adapter \n"
+              << "8 For Strategy \n"
               << std::endl;
 
-    const int numberOfTests{5};
-    const int input = getTestRequestFromUser(numberOfTests);
+    const DesignPatterns input = getTestRequestFromUser();
 
     switch (input)
     {
-    case 1:
+    case DesignPatterns::SINGLETON:
     {
         testSingleton();
         break;
     }
-    case 2:
+    case DesignPatterns::FACTORY:
     {
         testFactory();
         break;
     }
-    case 3:
+    case DesignPatterns::FACADE:
     {
         testFacade();
         break;
     }
-    case 4:
+    case DesignPatterns::FLYWEIGHT:
     {
         testFlyWeight();
         break;
     }
-    case 5:
+    case DesignPatterns::COMPOSITE:
     {
         testComposite();
+        break;
+    }
+    case DesignPatterns::DECORATOR:
+    {
+        testDecorator();
+        break;
+    }
+    case DesignPatterns::ADAPTER:
+    {
+        testAdapter();
+        break;
+    }
+    case DesignPatterns::STARTEGY:
+    {
+        testStrategy();
         break;
     }
 
@@ -57,17 +89,18 @@ int main()
     }
 }
 
-int getTestRequestFromUser(int numberOfTests)
+DesignPatterns getTestRequestFromUser()
 {
-    int n{0};
+    uint16_t n{0};
     std::cin >> n;
-    if (n >= 1 && n <= numberOfTests)
+    if (n >= 1 && n < static_cast<uint16_t>(DesignPatterns::COUNT))
     {
-        return n;
+        return static_cast<DesignPatterns>(n);
     }
     else
     {
-        std::cout << "You entered an invalid number. Try again! Enter a value from 1 to " << numberOfTests << ":" << std::endl;
-        return getTestRequestFromUser(numberOfTests);
+        std::cout << "You entered an invalid number. Try again! Enter a value from 1 to "
+        << static_cast<uint16_t>(DesignPatterns::COUNT) << ":" << std::endl;
+        return getTestRequestFromUser();
     }
 }
